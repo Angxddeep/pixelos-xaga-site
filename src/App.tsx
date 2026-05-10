@@ -3,7 +3,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Navbar } from './components/layout/Navbar';
 import { Hero } from './components/sections/Hero';
-import { Changelog } from './components/sections/Changelog';
 import { Downloads } from './components/sections/Downloads';
 import { FlashGuide } from './components/sections/FlashGuide';
 import { FAQ } from './components/sections/FAQ';
@@ -37,7 +36,6 @@ function App() {
       
       <main>
         <Hero />
-        <Changelog />
         <Downloads />
         <FlashGuide />
         <FAQ />

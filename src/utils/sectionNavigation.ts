@@ -9,7 +9,6 @@ type SectionRoute = {
 };
 
 const sectionRoutes: SectionRoute[] = [
-  { sectionId: 'changelog', path: '/changelogs', aliases: ['/changelog'] },
   { sectionId: 'downloads', path: '/downloads' },
   { sectionId: 'guide', path: '/instructions', aliases: ['/guide'] },
   {

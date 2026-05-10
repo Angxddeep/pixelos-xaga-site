@@ -10,10 +10,6 @@
       "destination": "/"
     },
     {
-      "source": "/changelogs",
-      "destination": "/"
-    },
-    {
       "source": "/support",
       "destination": "/"
     }

@@ -6,7 +6,6 @@ import { getSectionPath, scrollToSection } from '../../utils/sectionNavigation';
 import styles from './Navbar.module.css';
 
 const navLinks = [
-  { name: 'Changelog', href: getSectionPath('changelog'), sectionId: 'changelog' },
   { name: 'Downloads', href: getSectionPath('downloads'), sectionId: 'downloads' },
   { name: 'Guide', href: getSectionPath('guide'), sectionId: 'guide' },
   { name: 'Troubleshooting', href: getSectionPath('troubleshooting'), sectionId: 'troubleshooting' },
