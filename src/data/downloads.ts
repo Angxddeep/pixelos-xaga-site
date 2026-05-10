@@ -2,9 +2,9 @@ export const DOWNLOADS = {
   rom: {
     name: "PixelOS ROM",
     version: "16.2 (Android 16)",
-    date: "2026-04-25",
-    filename: "PixelOS_xaga-16.2-20260425-2055.zip",
-    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_xaga-16.2-20260425-2055.zip"
+    date: "2026-05-10",
+    filename: "PixelOS_xaga-16.2-20260510-1832.zip",
+    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_xaga-16.2-20260510-1832.zip"
   },
   recovery_images: [
     {
@@ -41,10 +41,10 @@ export const DOWNLOADS = {
   },
   fastboot_package: {
     name: "Fastboot Package",
-    version: "2026-04-25",
-    date: "2026-04-25",
-    filename: "PixelOS_20260425-2055_FASTBOOT.zip",
-    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_20260425-2055_FASTBOOT.zip"
+    version: "2026-05-10",
+    date: "2026-05-10",
+    filename: "PixelOS_20260510-1832_FASTBOOT.zip",
+    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_20260510-1832_FASTBOOT.zip"
   },
   drivers: {
     filename: "android-bootloader-interface-304243.zip",
