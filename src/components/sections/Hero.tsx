@@ -7,10 +7,22 @@ import { ChevronLeftIcon, ChevronRightIcon } from '../ui/Icons';
 import { getSectionPath, scrollToSection } from '../../utils/sectionNavigation';
 import styles from './Hero.module.css';
 
-const screenshots = Array.from({ length: 14 }, (_, index) => ({
-  src: `/screenshots/PixelOS xaga screenshot ${index + 1}.png`,
-  alt: `PixelOS xaga screenshot ${index + 1}`,
-}));
+const screenshotModules = import.meta.glob('../../assets/screenshots/*.png', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
+const screenshots = Object.entries(screenshotModules)
+  .sort(([a], [b]) => {
+    const numA = Number(a.match(/(\d+)\.png$/)?.[1] ?? 0);
+    const numB = Number(b.match(/(\d+)\.png$/)?.[1] ?? 0);
+    return numA - numB;
+  })
+  .map(([, url]) => ({
+    src: url as string,
+    alt: 'PixelOS screenshot',
+  }));
 
 export const Hero = () => {
   const wheelGestures = useMemo(
