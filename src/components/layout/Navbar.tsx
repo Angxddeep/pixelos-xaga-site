@@ -13,7 +13,7 @@ const navLinks = [
 
 const socialLinks = [
   { name: 'Telegram', href: 'https://t.me/XAGASupport', iconSrc: '/brands/telegram.svg' },
-  { name: 'GitHub', href: 'https://github.com/Pixelos-xaga/', iconSrc: '/brands/github.svg' },
+  { name: 'GitHub', href: 'https://github.com/Xagaforge/', iconSrc: '/brands/github.svg' },
 ] as const;
 
 export const Navbar = () => {
