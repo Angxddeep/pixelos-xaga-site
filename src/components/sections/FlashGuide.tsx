@@ -144,18 +144,18 @@ export const FlashGuide = () => {
       )
     },
     {
-      title: "Turn on ADB Sideload",
+      title: "Format",
       content: (
         <>
-          <p>Click <strong>Apply update</strong> and then click <strong>adb sideload</strong>.</p>
+          <p>Go to <strong>Factory Reset {"->"} Format Data/Factory Reset</strong> and confirm.</p>
         </>
       )
     },
     {
-      title: "Format and Reboot",
+      title: "Turn on ADB Sideload",
       content: (
         <>
-          <p>Go to <strong>Factory Reset {"->"} Format Data/Factory Reset</strong> and confirm.</p>
+          <p>Click <strong>Apply update</strong> and then click <strong>adb sideload</strong>.</p>
         </>
       )
     },
