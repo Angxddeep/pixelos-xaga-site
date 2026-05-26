@@ -20,10 +20,15 @@ export const CodeBlock = ({ code, language = 'bash', className }: CodeBlockProps
   return (
     <div className={`${styles.wrapper}${className ? ` ${className}` : ''}`}>
       <div className={styles.header}>
+        <div className={styles.trafficLights}>
+          <span className={styles.redDot}></span>
+          <span className={styles.yellowDot}></span>
+          <span className={styles.greenDot}></span>
+        </div>
         <span className={styles.lang}>{language}</span>
-        <button onClick={copy} className={styles.copyBtn}>
+        <button onClick={copy} className={styles.copyBtn} aria-label="Copy commands">
           {copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
-          {copied ? 'Copied' : 'Copy'}
+          <span className={styles.copyText}>{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
       <div className={styles.content}>

@@ -1,730 +1,535 @@
 .downloads {
-  padding: 100px 0;
+  padding: 80px 0;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
 }
 
 .header {
-  text-align: center;
   margin-bottom: var(--spacing-3xl);
+  text-align: left;
+}
+
+.sectionSubtitleLabel {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
 }
 
 .sectionTitle {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   font-weight: 800;
   color: var(--color-text-bright);
   margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.03em;
 }
 
-.sectionSubtitle {
+.sectionDescription {
   color: var(--color-text-dim);
-  font-size: 1.125rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 680px;
 }
 
-.grid {
-  display: grid;
-  gap: 38px;
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
-.romFeature {
-  display: grid;
-  gap: 28px;
+.dashboardSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.romIntro {
+.dashboardSectionTitle {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 8px;
+}
+
+/* Core ROM Release */
+.romRelease {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.romIndicator {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-lg);
+  bottom: var(--spacing-lg);
+  width: 3px;
+  background-color: var(--color-primary);
+}
+
+.romInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.romHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.romName {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-bright);
+  margin: 0;
+}
+
+.romTag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  border: 1px solid rgba(52, 168, 83, 0.25);
+  background: rgba(52, 168, 83, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.romMetadataGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(300px, 0.85fr);
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.metadataCell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metadataLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
+}
+
+.metadataValue {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-bright);
+}
+
+.metadataValueFilename {
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-dim);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 320px;
+}
+
+.romActions {
+  display: flex;
   align-items: center;
 }
 
-.romLead {
+.downloadRomBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(66, 133, 244, 0.4);
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.downloadRomBtn:hover {
+  background-color: #3b78e7;
+  transform: translateY(-1px);
+}
+
+/* Assets Table */
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.assetsTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.assetsTable th {
+  padding: 10px 16px;
+  border-bottom: 2px solid var(--color-border);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-dim);
+}
+
+.assetsTable td {
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.92rem;
+  vertical-align: middle;
+  color: var(--color-text);
+}
+
+.assetsTable tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+.fileNameCell {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-text-bright);
+}
+
+.fileNameCell code {
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.typeBadge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  border: 1px solid rgba(66, 133, 244, 0.25);
+  background: rgba(66, 133, 244, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.typeBadgeWarning {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ff9800;
+  border: 1px solid rgba(255, 152, 0, 0.25);
+  background: rgba(255, 152, 0, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.actionCol {
+  text-align: right;
+  width: 100px;
+}
+
+.inlineDownloadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-bright);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.inlineDownloadBtn:hover {
+  background-color: rgba(66, 133, 244, 0.08);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Utilities Row */
+.utilitiesRow {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 48px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 32px;
+}
+
+.utilityItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.utilityHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-bright);
+}
+
+.utilityIcon {
+  color: var(--color-primary);
+}
+
+.utilityTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.utilityDesc {
+  font-size: 0.92rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.platformCommandsList {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
-.romTitle {
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 0.96;
-  letter-spacing: -0.05em;
-  color: var(--color-text-bright);
+.platformCmd {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.romTitleBase {
-  color: var(--color-text-bright);
-}
-
-.romTitleAccent {
-  color: #87b0ff;
-}
-
-.fastbootTitle {
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  line-height: 0.96;
-  letter-spacing: -0.05em;
-  color: var(--color-text-bright);
-}
-
-.fastbootTitleAccent {
-  color: #6ee7b7;
-}
-
-.fastbootAction {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 0 18px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #6ee7b7, #26b981);
-  color: white;
-  font-weight: 600;
-  white-space: nowrap;
-  border: 1px solid rgba(110, 231, 183, 0.65);
-  box-shadow: 0 10px 24px rgba(38, 185, 129, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.fastbootAction:hover {
-  transform: translateY(-1px);
-  background: linear-gradient(135deg, #88efc5, #34c98f);
-  border-color: rgba(136, 239, 197, 0.9);
-  box-shadow: 0 14px 28px rgba(52, 201, 143, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.romDescription {
-  max-width: 44rem;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.romVisual,
-.assetVisual {
-  position: relative;
-  overflow: hidden;
-  border-radius: 28px;
-  background:
-    radial-gradient(circle at 18% 24%, rgba(110, 167, 255, 0.88), transparent 38%),
-    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.28), transparent 26%),
-    radial-gradient(circle at 66% 78%, rgba(120, 117, 255, 0.76), transparent 34%),
-    linear-gradient(150deg, rgba(24, 31, 74, 0.95), rgba(165, 196, 255, 0.84));
-}
-
-.romVisual {
-  width: min(100%, 360px);
-  min-height: 190px;
-  justify-self: end;
-}
-
-.assetVisual {
-  width: min(100%, 320px);
-  min-height: 220px;
-  justify-self: start;
-}
-
-.romVisual::after,
-.assetVisual::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 28%),
-    radial-gradient(circle at 62% 12%, rgba(255, 255, 255, 0.18), transparent 30%);
-  pointer-events: none;
-}
-
-.visualChipSecondary,
-.assetGlyphSecondary {
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.platformLabel {
+  font-size: 0.65rem;
   font-weight: 700;
-  color: white;
-  background: rgba(20, 23, 34, 0.82);
-  backdrop-filter: blur(18px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.08),
-    0 12px 28px rgba(0, 0, 0, 0.2);
-}
-
-.visualChipSecondary {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-}
-
-.romIconChip {
-  width: 104px;
-  height: 76px;
-  padding: 12px;
-}
-
-.romIcon {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.romStats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.statItem,
-.platformItem,
-.driverCard,
-.assetItem {
-  min-width: 0;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.statItem {
-  display: grid;
-  gap: 8px;
-}
-
-.statLabel,
-.detailLabel,
-.platformOs {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.48);
-}
-
-.statValue {
-  color: var(--color-text-bright);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.romFooter {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 20px;
-  align-items: end;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.detailBlock {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
-}
-
-.detailValue {
-  font-family: var(--font-mono);
-}
-
-.detailValue {
-  color: rgba(255, 255, 255, 0.86);
-  font-size: 0.86rem;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.assetDownload {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
-  flex-shrink: 0;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition:
-    transform var(--transition-normal),
-    background var(--transition-normal),
-    border-color var(--transition-normal),
-    color var(--transition-normal),
-    box-shadow var(--transition-normal);
-}
-
-.assetDownload {
-  width: 46px;
-  height: 46px;
-  color: white;
-  border-color: var(--asset-download-border, rgba(95, 157, 255, 0.65));
-  background: linear-gradient(
-    135deg,
-    var(--asset-download-start, #5f9dff),
-    var(--asset-download-end, #4f7fff)
-  );
-  box-shadow:
-    0 10px 24px var(--asset-download-shadow, rgba(79, 127, 255, 0.28)),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-.assetDownload:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.16);
-  color: var(--color-text-bright);
-}
-
-.assetDownload:hover {
-  transform: translateY(-1px);
-  background: linear-gradient(
-    135deg,
-    var(--asset-download-hover-start, #72abff),
-    var(--asset-download-hover-end, #5a88ff)
-  );
-  border-color: var(--asset-download-hover-border, rgba(114, 171, 255, 0.9));
-  box-shadow:
-    0 14px 28px var(--asset-download-hover-shadow, rgba(90, 136, 255, 0.34)),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.primaryAction {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 48px;
-  padding: 0 18px;
-  border-radius: 999px;
-  background: var(--button-gradient);
-  color: white;
-  font-weight: 600;
-  white-space: nowrap;
-  border: 1px solid var(--button-gradient-border);
-  box-shadow:
-    0 10px 24px var(--button-gradient-shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  transition:
-    transform var(--transition-normal),
-    background var(--transition-normal),
-    border-color var(--transition-normal),
-    box-shadow var(--transition-normal);
-}
-
-.primaryAction:hover {
-  transform: translateY(-1px);
-  background: var(--button-gradient-hover);
-  border-color: var(--button-gradient-hover-border);
-  box-shadow:
-    0 14px 28px var(--button-gradient-hover-shadow),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.assetGrid,
-.utilityGrid {
-  display: grid;
-  gap: 22px 18px;
-}
-
-.assetGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.assetCard {
-  --asset-download-start: #5f9dff;
-  --asset-download-end: #4f7fff;
-  --asset-download-border: rgba(95, 157, 255, 0.65);
-  --asset-download-shadow: rgba(79, 127, 255, 0.28);
-  --asset-download-hover-start: #72abff;
-  --asset-download-hover-end: #5a88ff;
-  --asset-download-hover-border: rgba(114, 171, 255, 0.9);
-  --asset-download-hover-shadow: rgba(90, 136, 255, 0.34);
-  display: grid;
-  gap: 14px;
-}
-
-.recovery .assetVisual {
-  background:
-    radial-gradient(circle at 16% 24%, rgba(255, 177, 118, 0.88), transparent 34%),
-    radial-gradient(circle at 82% 18%, rgba(255, 238, 213, 0.26), transparent 24%),
-    radial-gradient(circle at 65% 80%, rgba(132, 62, 20, 0.8), transparent 34%),
-    linear-gradient(150deg, rgba(54, 24, 8, 0.96), rgba(205, 125, 72, 0.9));
-}
-
-.recovery {
-  --asset-download-start: #ffb26d;
-  --asset-download-end: #d37a3d;
-  --asset-download-border: rgba(255, 178, 109, 0.68);
-  --asset-download-shadow: rgba(211, 122, 61, 0.3);
-  --asset-download-hover-start: #ffc286;
-  --asset-download-hover-end: #e28949;
-  --asset-download-hover-border: rgba(255, 194, 134, 0.92);
-  --asset-download-hover-shadow: rgba(226, 137, 73, 0.36);
-}
-
-.boot .assetVisual {
-  background:
-    radial-gradient(circle at 16% 24%, rgba(197, 140, 255, 0.88), transparent 34%),
-    radial-gradient(circle at 82% 18%, rgba(239, 227, 255, 0.24), transparent 24%),
-    radial-gradient(circle at 65% 80%, rgba(78, 45, 122, 0.8), transparent 34%),
-    linear-gradient(150deg, rgba(22, 10, 41, 0.96), rgba(103, 55, 167, 0.9));
-}
-
-.boot {
-  --asset-download-start: #c68cff;
-  --asset-download-end: #8d56dc;
-  --asset-download-border: rgba(198, 140, 255, 0.68);
-  --asset-download-shadow: rgba(141, 86, 220, 0.3);
-  --asset-download-hover-start: #d4a8ff;
-  --asset-download-hover-end: #9a63ea;
-  --asset-download-hover-border: rgba(212, 168, 255, 0.92);
-  --asset-download-hover-shadow: rgba(154, 99, 234, 0.36);
-}
-
-.preloader .assetVisual {
-  background:
-    radial-gradient(circle at 16% 24%, rgba(255, 120, 120, 0.88), transparent 34%),
-    radial-gradient(circle at 82% 18%, rgba(255, 232, 232, 0.22), transparent 24%),
-    radial-gradient(circle at 65% 80%, rgba(100, 19, 19, 0.82), transparent 34%),
-    linear-gradient(150deg, rgba(42, 10, 10, 0.96), rgba(132, 39, 39, 0.88));
-}
-
-.preloader {
-  --asset-download-start: #ff8989;
-  --asset-download-end: #cc4f4f;
-  --asset-download-border: rgba(255, 137, 137, 0.68);
-  --asset-download-shadow: rgba(204, 79, 79, 0.3);
-  --asset-download-hover-start: #ffa0a0;
-  --asset-download-hover-end: #df6262;
-  --asset-download-hover-border: rgba(255, 160, 160, 0.92);
-  --asset-download-hover-shadow: rgba(223, 98, 98, 0.36);
-}
-
-.archive .assetVisual {
-  background:
-    radial-gradient(circle at 16% 24%, rgba(197, 211, 255, 0.62), transparent 34%),
-    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.28), transparent 24%),
-    radial-gradient(circle at 65% 80%, rgba(67, 76, 107, 0.82), transparent 34%),
-    linear-gradient(150deg, rgba(18, 20, 30, 0.96), rgba(85, 94, 126, 0.88));
-}
-
-.assetGlyphSecondary {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  min-width: 58px;
-  height: 58px;
-  padding: 0 16px;
-  border-radius: 17px;
-  font-size: 0.72rem;
   letter-spacing: 0.08em;
-  white-space: nowrap;
+  color: var(--color-text-dim);
 }
 
-.assetBody {
-  display: grid;
-  gap: 10px;
+.monospaceCodeBlock {
+  margin: 0;
+  font-family: var(--font-mono);
+  border-radius: 4px;
 }
 
-.assetTitle {
-  font-size: 1.55rem;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+.utilityLinkRow {
+  margin-top: 4px;
+}
+
+.externalLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+.externalLink:hover {
   color: var(--color-text-bright);
 }
 
-.assetDescription,
-.utilityText {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.95rem;
-  line-height: 1.68;
-}
-
-.recovery .assetTitle {
-  color: #ffb26d;
-}
-
-.boot .assetTitle {
-  color: #c68cff;
-}
-
-.preloader .assetTitle {
-  color: #ff8989;
-}
-
-.archive .assetTitle {
-  color: #cad5ff;
-}
-
-.assetList {
-  display: grid;
-  gap: 18px;
-}
-
-.assetItem,
-.driverCard {
-  display: grid;
-  gap: 14px;
-}
-
-.assetTopRow {
+/* Drivers specific */
+.driverDownloadRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  padding: 12px 16px;
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.005);
 }
 
-.assetFileName {
-  min-width: 0;
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.driverFilename {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-bright);
+  word-break: break-all;
 }
 
-.archiveLink,
-.inlineLink {
+.downloadDriverBtn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  width: fit-content;
-  font-size: 0.94rem;
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-.archiveLink {
-  color: #cad5ff;
+.downloadDriverBtn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
 }
 
-.inlineLink {
-  color: #87b0ff;
+.driverInstructions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
 }
 
-.archiveLink:hover,
-.inlineLink:hover {
-  color: var(--color-text-bright);
-}
-
-.utilityGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-}
-
-.utilityPanel {
-  display: grid;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.platformPanel {
-  display: grid;
-  gap: 18px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.platformPanel .utilityTitle {
-  color: #87b0ff;
-}
-
-.archivePanel .utilityTitle {
-  color: #cad5ff;
-}
-
-.driversPanel {
-  --asset-download-start: #6ee7b7;
-  --asset-download-end: #26b981;
-  --asset-download-border: rgba(110, 231, 183, 0.68);
-  --asset-download-shadow: rgba(38, 185, 129, 0.28);
-  --asset-download-hover-start: #88efc5;
-  --asset-download-hover-end: #34c98f;
-  --asset-download-hover-border: rgba(136, 239, 197, 0.92);
-  --asset-download-hover-shadow: rgba(52, 201, 143, 0.34);
-}
-
-.utilityHeader {
-  display: grid;
-  gap: 10px;
-}
-
-.utilityTitle {
-  font-size: 1.45rem;
-  line-height: 1.04;
-  letter-spacing: -0.04em;
-  color: var(--color-text-bright);
-}
-
-.platformList {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.platformItem {
-  display: grid;
-  gap: 10px;
-}
-
-.platformCodeBlock {
-  margin: 0;
-  min-width: 0;
+.instructionsHeader {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-dim);
 }
 
 .instructionsList {
-  margin: 0;
-  padding-left: 1.2rem;
-  display: grid;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.92rem;
-  line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
-.instructionItem::marker {
-  color: #6ee7b7;
+.instructionStep {
+  display: flex;
+  gap: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.stepNum {
   font-weight: 700;
+  color: var(--color-primary);
 }
 
-@media (max-width: 1100px) {
-  .romFooter {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.stepText {
+  flex: 1;
+}
+
+/* Mirrors Section */
+.mirrorsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 32px;
+}
+
+.mirrorsInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--color-text-dim);
+}
+
+.infoIcon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.mirrorsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.mirrorLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-text-bright);
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.mirrorLink:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(66, 133, 244, 0.03);
+}
+
+/* Responsiveness */
+@media (max-width: 960px) {
+  .mirrorsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .romRelease {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
   }
 
-  .primaryAction {
-    grid-column: 1 / -1;
+  .downloadRomBtn {
     width: 100%;
   }
 
-  .platformList {
+  .utilitiesRow {
     grid-template-columns: 1fr;
+    gap: 36px;
   }
 }
 
-@media (max-width: 920px) {
-  .romIntro,
-  .utilityGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .assetGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .romVisual {
-    width: min(100%, 340px);
-    min-height: 180px;
-    justify-self: start;
-  }
-
-  .assetVisual {
-    width: min(100%, 340px);
-    justify-self: start;
-  }
-
-  .romStats {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
+@media (max-width: 580px) {
   .downloads {
-    padding: 88px 0;
+    padding: 60px 0;
   }
 
   .container {
     padding: 0 var(--spacing-lg);
   }
 
-  .header {
-    margin-bottom: var(--spacing-2xl);
-  }
-
   .sectionTitle {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
 
-  .sectionSubtitle {
-    font-size: 1rem;
-  }
-
-  .grid {
-    gap: 44px;
-  }
-
-  .assetGrid,
-  .utilityGrid {
-    gap: 20px;
-  }
-
-  .assetGrid,
-  .archiveRow {
+  .romMetadataGrid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .romTitle {
-    font-size: 2rem;
+  .metadataValueFilename {
+    max-width: 100%;
   }
 
-  .romFooter {
+  .mirrorsGrid {
     grid-template-columns: 1fr;
-  }
-
-  .romVisual {
-    width: min(100%, 280px);
-    min-height: 156px;
-  }
-
-  .assetVisual {
-    width: min(100%, 280px);
-    min-height: 185px;
-  }
-
-  .visualChipSecondary {
-    width: 52px;
-    height: 52px;
-    border-radius: 16px;
-  }
-
-  .visualChipSecondary {
-    left: 50%;
-  }
-
-  .romIconChip {
-    width: 88px;
-    height: 64px;
-  }
-
-  .assetGlyphSecondary {
-    left: 50%;
-    width: auto;
-    min-width: 52px;
-    max-width: calc(100% - 32px);
-    height: 52px;
-    padding: 0 14px;
-    border-radius: 16px;
-    font-size: 0.68rem;
-    line-height: 1;
-  }
-
-  .assetTitle,
-  .utilityTitle {
-    font-size: 1.3rem;
-  }
-
-  .detailValue {
-    font-size: 0.74rem;
   }
 }
+

@@ -1,255 +1,251 @@
-import { clsx } from 'clsx';
 import { CodeBlock } from '../ui/CodeBlock';
 import {
   ExternalLinkIcon,
   DownloadIcon,
+  TerminalIcon,
+  WrenchIcon,
+  InfoIcon,
 } from '../ui/Icons';
 import { DOWNLOADS } from '../../data/downloads';
 import styles from './Downloads.module.css';
-
-type DownloadAsset = {
-  name: string;
-  link: string;
-};
-
-type AssetGroup = {
-  id: string;
-  title: string;
-  description: string;
-  visualLabel: string;
-  tone: 'recovery' | 'boot' | 'preloader' | 'archive';
-  items?: DownloadAsset[];
-  href?: string;
-};
 
 export const Downloads = () => {
   const bootImages = DOWNLOADS.recovery_images.filter((img) => img.name === 'boot.img');
   const recoveryImages = DOWNLOADS.recovery_images.filter((img) => img.name === 'vendor_boot.img');
 
-  const assetGroups: AssetGroup[] = [
-    {
-      id: 'recovery',
-      title: 'PixelOS Recovery',
-      description: 'Use this image to boot into recovery',
-      visualLabel: 'RECOVERY',
-      tone: 'recovery',
-      items: recoveryImages,
-    },
-    {
-      id: 'boot',
-      title: 'Boot Image',
-      description: 'Boot Image also patch this image if you want to root',
-      visualLabel: 'BOOT IMAGE',
-      tone: 'boot',
-      items: bootImages,
-    },
-    {
-      id: 'preloader',
-      title: 'Engineering Preloader',
-      description: 'Revives Devices if Bricked, Very Important',
-      visualLabel: 'PRELOADER',
-      tone: 'preloader',
-      items: DOWNLOADS.preloader,
-    },
-    {
-      id: 'archive',
-      title: 'Build Archive',
-      description: 'Browse previous PixelOS xaga releases and mirrors on SourceForge.',
-      visualLabel: 'ARCHIVE',
-      tone: 'archive',
-      href: DOWNLOADS.links.sourceforge,
-    },
-  ];
-  const primaryAssetGroups = assetGroups.filter((group) => group.id !== 'archive');
-  const archiveGroup = assetGroups.find((group) => group.id === 'archive');
-
-  const renderAssetItem = (asset: DownloadAsset) => (
-    <div key={asset.name} className={styles.assetItem}>
-      <div className={styles.assetTopRow}>
-        <span className={styles.assetFileName}>{asset.name}</span>
-        <a href={asset.link} className={styles.assetDownload} title={`Download ${asset.name}`}>
-          <DownloadIcon size={18} />
-        </a>
-      </div>
-    </div>
-  );
-
   return (
     <section id="downloads" className={styles.downloads}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.sectionTitle}>Download Hub</h2>
-          <p className={styles.sectionSubtitle}>Everything you need to flash PixelOS on xaga.</p>
+          <span className={styles.sectionSubtitleLabel}>Releases</span>
+          <h2 className={styles.sectionTitle}>Downloads</h2>
+          <p className={styles.sectionDescription}>
+            Pixelos zip and recovery images for Redmi Note 11T Pro / Pro+ / POCO X4 GT / Redmi K50i (xaga).
+          </p>
         </div>
 
-        <div className={styles.grid}>
-          <article className={styles.romFeature}>
-            <div className={styles.romIntro}>
-              <div className={styles.romLead}>
-                <h3 className={styles.romTitle}>
-                  <span className={styles.romTitleBase}>PixelOS</span>{' '}
-                  <span className={styles.romTitleAccent}>OTA ZIP</span>
-                </h3>
-                <p className={styles.romDescription}>
-                  Latest Rom zip for Xaga
-                </p>
-              </div>
-
-              <div className={styles.romVisual} aria-hidden="true">
-                <div className={clsx(styles.visualChipSecondary, styles.romIconChip)}>
-                  <img src="/android-icon.svg" alt="" className={styles.romIcon} />
+        <div className={styles.dashboard}>
+          {/* Main ROM Block */}
+          <div className={styles.dashboardSection}>
+            <h3 className={styles.dashboardSectionTitle}>PixelOS </h3>
+            <div className={styles.romRelease}>
+              <div className={styles.romIndicator}></div>
+              <div className={styles.romInfo}>
+                <div className={styles.romHeader}>
+                  <h4 className={styles.romName}>PixelOS ROM</h4>
+                </div>
+                <div className={styles.romMetadataGrid}>
+                  <div className={styles.metadataCell}>
+                    <span className={styles.metadataLabel}>Version</span>
+                    <span className={styles.metadataValue}>{DOWNLOADS.rom.version}</span>
+                  </div>
+                  <div className={styles.metadataCell}>
+                    <span className={styles.metadataLabel}>Build Date</span>
+                    <span className={styles.metadataValue}>{DOWNLOADS.rom.date}</span>
+                  </div>
+                  <div className={styles.metadataCell}>
+                    <span className={styles.metadataLabel}>Package File</span>
+                    <span className={styles.metadataValueFilename} title={DOWNLOADS.rom.filename}>
+                      {DOWNLOADS.rom.filename}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className={styles.romStats}>
-              <div className={styles.statItem}>
-                <span className={styles.statLabel}>Android</span>
-                <strong className={styles.statValue}>{DOWNLOADS.rom.version}</strong>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statLabel}>Build date</span>
-                <strong className={styles.statValue}>{DOWNLOADS.rom.date}</strong>
+              <div className={styles.romActions}>
+                <a href={DOWNLOADS.rom.link} className={styles.downloadRomBtn}>
+                  <DownloadIcon size={18} />
+                  <span>Download ROM Package</span>
+                </a>
               </div>
             </div>
-
-            <div className={styles.romFooter}>
-              <div className={styles.detailBlock}>
-                <span className={styles.detailLabel}>Filename</span>
-                <code className={styles.detailValue}>{DOWNLOADS.rom.filename}</code>
-              </div>
-
-              <a href={DOWNLOADS.rom.link} className={styles.primaryAction}>
-                <DownloadIcon size={18} />
-                Download ZIP
-              </a>
-            </div>
-          </article>
-
-
-          <div className={styles.assetGrid}>
-            {primaryAssetGroups.map((group) => (
-              <article
-                key={group.id}
-                id={group.id === 'preloader' ? 'preloader-download' : undefined}
-                className={clsx(styles.assetCard, styles[group.tone])}
-              >
-                <div className={styles.assetVisual} aria-hidden="true">
-                  <div className={styles.assetGlyphSecondary}>{group.visualLabel}</div>
-                </div>
-
-                <div className={styles.assetBody}>
-                  <h3 className={styles.assetTitle}>{group.title}</h3>
-                  <p className={styles.assetDescription}>{group.description}</p>
-
-                  {group.items ? (
-                    <div className={styles.assetList}>{group.items.map(renderAssetItem)}</div>
-                  ) : (
-                    <a
-                      href={group.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.archiveLink}
-                    >
-                      Open SourceForge
-                      <ExternalLinkIcon size={16} />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
           </div>
 
-          <article className={clsx(styles.utilityPanel, styles.platformPanel)}>
-            <div className={styles.utilityHeader}>
-              <h3 className={styles.utilityTitle}>Platform Tools</h3>
+          {/* System & Boot Partition Images Table */}
+          <div className={styles.dashboardSection}>
+            <h3 className={styles.dashboardSectionTitle}>Partition & Boot Images</h3>
+            <div className={styles.tableWrapper}>
+              <table className={styles.assetsTable}>
+                <thead>
+                  <tr>
+                    <th>Asset Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th className={styles.actionCol}>Download</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* vendor_boot.img */}
+                  {recoveryImages.map((img) => (
+                    <tr key={img.name}>
+                      <td className={styles.fileNameCell}><code>{img.name}</code></td>
+                      <td><span className={styles.typeBadge}>Recovery</span></td>
+                      <td>Recovery image.</td>
+                      <td className={styles.actionCol}>
+                        <a href={img.link} className={styles.inlineDownloadBtn} title={`Download ${img.name}`}>
+                          <DownloadIcon size={16} />
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                  {/* boot.img */}
+                  {bootImages.map((img) => (
+                    <tr key={img.name}>
+                      <td className={styles.fileNameCell}><code>{img.name}</code></td>
+                      <td><span className={styles.typeBadge}>Boot Image</span></td>
+                      <td>Boot image.</td>
+                      <td className={styles.actionCol}>
+                        <a href={img.link} className={styles.inlineDownloadBtn} title={`Download ${img.name}`}>
+                          <DownloadIcon size={16} />
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                  {/* preloader */}
+                  {DOWNLOADS.preloader.map((img) => (
+                    <tr key={img.name} id="preloader-download">
+                      <td className={styles.fileNameCell}><code>{img.name}</code></td>
+                      <td><span className={styles.typeBadgeWarning}>Preloader</span></td>
+                      <td>Engineering preloader image.</td>
+                      <td className={styles.actionCol}>
+                        <a href={img.link} className={styles.inlineDownloadBtn} title={`Download ${img.name}`}>
+                          <DownloadIcon size={16} />
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
+          </div>
 
-            <p className={styles.utilityText}>
-              ADB and Fastboot are required for flashing, sideloading, and recovery work.
-            </p>
-
-            <a
-              href={DOWNLOADS.platform_tools.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.inlineLink}
-            >
-              Download from Google
-              <ExternalLinkIcon size={14} />
-            </a>
-
-            <div className={styles.platformList}>
-              {DOWNLOADS.platform_tools.installs.map((install) => (
-                <div key={install.os} className={styles.platformItem}>
-                  <span className={styles.platformOs}>{install.os}</span>
-                  <CodeBlock
-                    code={install.command}
-                    language={install.os}
-                    className={styles.platformCodeBlock}
-                  />
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <div className={styles.utilityGrid}>
-            {archiveGroup ? (
-              <article className={clsx(styles.utilityPanel, styles.archivePanel)}>
-                <div className={styles.utilityHeader}>
-                  <h3 className={styles.utilityTitle}>SourceForge Archive</h3>
-                </div>
-
-                <p className={styles.utilityText}>{archiveGroup.description}</p>
-
+          {/* Utilities and Flashing Tools */}
+          <div className={styles.utilitiesRow}>
+            {/* Platform Tools */}
+            <div className={styles.utilityItem}>
+              <div className={styles.utilityHeader}>
+                <TerminalIcon size={18} className={styles.utilityIcon} />
+                <h4 className={styles.utilityTitle}>Platform Tools</h4>
+              </div>
+              <p className={styles.utilityDesc}>
+                Android Debug Bridge (ADB) and Fastboot binaries are required to communicate with and flash your device.
+              </p>
+              
+              <div className={styles.platformCommandsList}>
+                {DOWNLOADS.platform_tools.installs.map((install) => (
+                  <div key={install.os} className={styles.platformCmd}>
+                    <span className={styles.platformLabel}>{install.os}</span>
+                    <CodeBlock
+                      code={install.command}
+                      language={install.os.toLowerCase()}
+                      className={styles.monospaceCodeBlock}
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              <div className={styles.utilityLinkRow}>
                 <a
-                  href={archiveGroup.href}
+                  href={DOWNLOADS.platform_tools.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.archiveLink}
+                  className={styles.externalLink}
                 >
-                  Open SourceForge
-                  <ExternalLinkIcon size={16} />
+                  <span>Google Developer SDK Releases</span>
+                  <ExternalLinkIcon size={14} />
                 </a>
-              </article>
-            ) : null}
-
-            <article className={clsx(styles.utilityPanel, styles.driversPanel)}>
-              <div className={styles.utilityHeader}>
-                <h3 className={styles.utilityTitle}>Drivers</h3>
               </div>
+            </div>
 
-              <p className={styles.utilityText}>
-                Install the USB driver first if Fastboot does not detect your device.
+            {/* USB Drivers */}
+            <div className={styles.utilityItem}>
+              <div className={styles.utilityHeader}>
+                <WrenchIcon size={18} className={styles.utilityIcon} />
+                <h4 className={styles.utilityTitle}>USB Interface Drivers</h4>
+              </div>
+              <p className={styles.utilityDesc}>
+                Required for Windows environments when Fastboot commands fail to recognize the device bootloader interface.
               </p>
 
-              <div className={styles.driverCard}>
-                <div className={styles.assetTopRow}>
-                  <span className={styles.assetFileName}>{DOWNLOADS.drivers.filename}</span>
-                  <a
-                    href={DOWNLOADS.drivers.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.assetDownload}
-                    title={`Download ${DOWNLOADS.drivers.filename}`}
-                  >
-                    <DownloadIcon size={18} />
-                  </a>
-                </div>
-
+              <div className={styles.driverDownloadRow}>
+                <span className={styles.driverFilename}>
+                  <code>{DOWNLOADS.drivers.filename}</code>
+                </span>
+                <a
+                  href={DOWNLOADS.drivers.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.downloadDriverBtn}
+                  title="Download USB Drivers"
+                >
+                  <DownloadIcon size={16} />
+                  <span>Download ZIP</span>
+                </a>
               </div>
 
-              <ol className={styles.instructionsList}>
-                {DOWNLOADS.drivers.instructions.map((instruction) => (
-                  <li key={instruction} className={styles.instructionItem}>
-                    {instruction}
-                  </li>
-                ))}
-              </ol>
-            </article>
+              <div className={styles.driverInstructions}>
+                <span className={styles.instructionsHeader}>Installation Steps:</span>
+                <ol className={styles.instructionsList}>
+                  {DOWNLOADS.drivers.instructions.map((step, idx) => (
+                    <li key={idx} className={styles.instructionStep}>
+                      <span className={styles.stepNum}>{idx + 1}.</span>
+                      <span className={styles.stepText}>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          {/* SourceForge Archive & External Channels */}
+          <div className={styles.mirrorsSection}>
+            <div className={styles.mirrorsInfo}>
+              <InfoIcon size={18} className={styles.infoIcon} />
+              <span>
+                Need older builds or official community discussion? Browse our archives or contact our active developers.
+              </span>
+            </div>
+            <div className={styles.mirrorsGrid}>
+              <a
+                href={DOWNLOADS.links.sourceforge}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mirrorLink}
+              >
+                <span>SourceForge Build Archive</span>
+                <ExternalLinkIcon size={14} />
+              </a>
+              <a
+                href={DOWNLOADS.links.xda}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mirrorLink}
+              >
+                <span>Official XDA Forum Thread</span>
+                <ExternalLinkIcon size={14} />
+              </a>
+              <a
+                href={DOWNLOADS.links.telegram_support}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mirrorLink}
+              >
+                <span>Telegram Support Group</span>
+                <ExternalLinkIcon size={14} />
+              </a>
+              <a
+                href={DOWNLOADS.links.telegram_channel}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.mirrorLink}
+              >
+                <span>Telegram Updates Channel</span>
+                <ExternalLinkIcon size={14} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
