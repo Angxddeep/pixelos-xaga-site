@@ -39,13 +39,7 @@ export const DOWNLOADS = {
       }
     ]
   },
-  fastboot_package: {
-    name: "Fastboot Package",
-    version: "2026-05-10",
-    date: "2026-05-10",
-    filename: "PixelOS_20260510-1832_FASTBOOT.zip",
-    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_20260510-1832_FASTBOOT.zip"
-  },
+
   drivers: {
     filename: "android-bootloader-interface-304243.zip",
     link: "https://pixelos-xaga-worker.angxddeep.workers.dev/android-bootloader-interface-304243.zip",

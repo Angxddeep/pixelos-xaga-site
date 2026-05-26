@@ -1,51 +1,16 @@
-import { useState } from 'react';
-import type { MouseEvent, ReactNode } from 'react';
-import { clsx } from 'clsx';
+import type { MouseEvent } from 'react';
 import { CodeBlock } from '../ui/CodeBlock';
 import { Card } from '../ui/Card';
-import { AlertTriangleIcon, InfoIcon, TerminalIcon, WrenchIcon } from '../ui/Icons';
+import { AlertTriangleIcon, InfoIcon } from '../ui/Icons';
 import { DOWNLOADS } from '../../data/downloads';
 import { getSectionPath, scrollToSection } from '../../utils/sectionNavigation';
 import styles from './FlashGuide.module.css';
 
-type FlashMethod = 'recovery' | 'fastboot' | null;
-
-const MethodCard = ({
-  selected,
-  onClick,
-  icon,
-  title,
-  description,
-}: {
-  selected: boolean;
-  onClick: () => void;
-  icon: ReactNode;
-  title: string;
-  description: string;
-}) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={clsx(styles.methodCard, selected && styles.methodCardSelected)}
-    aria-pressed={selected}
-  >
-    <div className={styles.methodIcon}>{icon}</div>
-    <div className={styles.methodInfo}>
-      <strong className={styles.methodTitle}>{title}</strong>
-      <span className={styles.methodDesc}>{description}</span>
-    </div>
-  </button>
-);
-
 export const FlashGuide = () => {
-  const [method, setMethod] = useState<FlashMethod>(null);
-
   const handleSectionLinkClick = (sectionId: string, path: string) => (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     scrollToSection(sectionId, { path, history: 'push' });
   };
-
-  const resetMethod = () => setMethod(null);
 
   const commonSteps = [
     {
@@ -83,35 +48,6 @@ export const FlashGuide = () => {
             Download the engineering preloader from the <a href={getSectionPath('downloads')} onClick={handleSectionLinkClick('preloader-download', getSectionPath('downloads'))}>Engineering Preloader</a> section in the Downloads hub before continuing.
           </p>
           <CodeBlock code={`fastboot flash preloader1 preloader_xaga.bin\nfastboot flash preloader2 preloader_xaga.bin`} />
-        </>
-      )
-    },
-    {
-      title: "Choose Install Method",
-      content: (
-        <>
-          <p>Select how you want to install PixelOS:</p>
-          <div className={styles.methodGrid}>
-            <MethodCard
-              selected={method === 'recovery'}
-              onClick={() => setMethod('recovery')}
-              icon={<TerminalIcon size={28} />}
-              title="Recovery Method"
-              description="Flash via custom recovery — requires boot & vendor_boot images"
-            />
-            <MethodCard
-              selected={method === 'fastboot'}
-              onClick={() => setMethod('fastboot')}
-              icon={<WrenchIcon size={28} />}
-              title="Fastboot Method"
-              description="Flash directly with the fastboot package via fastboot"
-            />
-          </div>
-          {method && (
-            <p className={styles.methodHint}>
-              {method === 'recovery' ? 'Continuing with Recovery method...' : 'Continuing with Fastboot method...'}
-            </p>
-          )}
         </>
       )
     },
@@ -172,66 +108,7 @@ export const FlashGuide = () => {
     },
   ];
 
-  const fastbootSteps = [
-    {
-      title: "Download & Extract",
-      content: (
-        <>
-          <p>
-            Download the Fastboot Package from the{' '}
-            <a href={getSectionPath('downloads')} onClick={handleSectionLinkClick('downloads', getSectionPath('downloads'))}>Downloads</a> hub
-            and extract the ZIP archive.
-          </p>
-        </>
-      )
-    },
-    {
-      title: "Run the Installation Script",
-      content: (
-        <>
-          <p>Open a terminal in the extracted folder and run the script for your OS:</p>
-          <div className={styles.platformList}>
-            <div className={styles.platformItem}>
-              <span className={styles.platformLabel}>macOS</span>
-              <CodeBlock code="bash mac_installation.sh" />
-            </div>
-            <div className={styles.platformItem}>
-              <span className={styles.platformLabel}>Windows</span>
-              <CodeBlock code="win_installation.bat" />
-            </div>
-            <div className={styles.platformItem}>
-              <span className={styles.platformLabel}>Linux</span>
-              <CodeBlock code="bash linux_installation.sh" />
-            </div>
-          </div>
-          <div className={styles.info}>
-            <InfoIcon size={18} />
-            <span>The script will handle all flashing steps automatically.</span>
-          </div>
-        </>
-      )
-    },
-    {
-      title: "Reboot",
-      content: (
-        <>
-          <p>Once the script completes, reboot your device.</p>
-          <CodeBlock code="fastboot reboot" />
-          <div className={styles.info}>
-            <InfoIcon size={18} />
-            <span>The first boot may take a few minutes. This is normal.</span>
-          </div>
-        </>
-      )
-    },
-  ];
-
-  const allSteps = [...commonSteps];
-  if (method === 'recovery') {
-    allSteps.push(...recoverySteps);
-  } else if (method === 'fastboot') {
-    allSteps.push(...fastbootSteps);
-  }
+  const allSteps = [...commonSteps, ...recoverySteps];
 
   return (
     <section id="guide" className={styles.guide}>
@@ -256,13 +133,7 @@ export const FlashGuide = () => {
           ))}
         </div>
 
-        {method && (
-          <div className={styles.methodSwitcher}>
-            <button type="button" onClick={resetMethod} className={styles.switchButton}>
-              <span>← Switch to {method === 'recovery' ? 'Fastboot' : 'Recovery'} method</span>
-            </button>
-          </div>
-        )}
+
 
         <Card variant="glass" className={styles.disclaimerCard}>
           <div className={styles.disclaimerHeader}>

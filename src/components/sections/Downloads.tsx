@@ -3,7 +3,6 @@ import { CodeBlock } from '../ui/CodeBlock';
 import {
   ExternalLinkIcon,
   DownloadIcon,
-  WrenchIcon,
 } from '../ui/Icons';
 import { DOWNLOADS } from '../../data/downloads';
 import styles from './Downloads.module.css';
@@ -127,48 +126,6 @@ export const Downloads = () => {
             </div>
           </article>
 
-          <article className={styles.romFeature}>
-            <div className={styles.romIntro}>
-              <div className={styles.romLead}>
-                <h3 className={styles.fastbootTitle}>
-                  <span className={styles.romTitleBase}>Fastboot</span>{' '}
-                  <span className={styles.fastbootTitleAccent}>Package</span>
-                </h3>
-                <p className={styles.romDescription}>
-                  Flash directly via fastboot using a single script
-                </p>
-              </div>
-
-              <div className={styles.romVisual} aria-hidden="true">
-                <div className={clsx(styles.visualChipSecondary, styles.romIconChip)}>
-                  <WrenchIcon size={32} />
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.romStats}>
-              <div className={styles.statItem}>
-                <span className={styles.statLabel}>Version</span>
-                <strong className={styles.statValue}>{DOWNLOADS.fastboot_package.version}</strong>
-              </div>
-              <div className={styles.statItem}>
-                <span className={styles.statLabel}>Release date</span>
-                <strong className={styles.statValue}>{DOWNLOADS.fastboot_package.date}</strong>
-              </div>
-            </div>
-
-            <div className={styles.romFooter}>
-              <div className={styles.detailBlock}>
-                <span className={styles.detailLabel}>Filename</span>
-                <code className={styles.detailValue}>{DOWNLOADS.fastboot_package.filename}</code>
-              </div>
-
-              <a href={DOWNLOADS.fastboot_package.link} className={styles.fastbootAction}>
-                <DownloadIcon size={18} />
-                Download ZIP
-              </a>
-            </div>
-          </article>
 
           <div className={styles.assetGrid}>
             {primaryAssetGroups.map((group) => (
