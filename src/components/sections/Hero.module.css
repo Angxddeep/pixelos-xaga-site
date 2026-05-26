@@ -6,9 +6,9 @@
   position: relative;
   overflow: hidden;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px), 
-    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    radial-gradient(circle at top, rgba(66, 133, 244, 0.08), transparent 45%);
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at top, rgba(66, 133, 244, 0.12), transparent 45%);
   background-size: 4.5rem 4.5rem, 4.5rem 4.5rem, auto;
   background-position: center top;
 }
