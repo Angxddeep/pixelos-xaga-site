@@ -2,9 +2,9 @@ export const DOWNLOADS = {
   rom: {
     name: "PixelOS ROM",
     version: "16.2 (Android 16)",
-    date: "2026-05-20",
-    filename: "PixelOS_xaga-16.2-20260520-1242.zip",
-    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_xaga-16.2-20260520-1242.zip"
+    date: "2026-05-28",
+    filename: "PixelOS_xaga-16.2-20260528-0647.zip",
+    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_xaga-16.2-20260528-0647.zip"
   },
   recovery_images: [
     {
