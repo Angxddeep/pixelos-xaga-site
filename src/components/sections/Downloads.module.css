@@ -61,6 +61,12 @@
 }
 
 /* Core ROM Release */
+.releasesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .romRelease {
   position: relative;
   display: flex;
@@ -79,6 +85,15 @@
   bottom: var(--spacing-lg);
   width: 3px;
   background-color: var(--color-primary);
+}
+
+.romIndicatorFastboot {
+  position: absolute;
+  left: 0;
+  top: var(--spacing-lg);
+  bottom: var(--spacing-lg);
+  width: 3px;
+  background-color: var(--color-accent);
 }
 
 .romInfo {
@@ -116,7 +131,7 @@
 
 .romMetadataGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: 180px 140px minmax(0, 1fr);
   gap: var(--spacing-md);
 }
 
@@ -168,11 +183,34 @@
   border-radius: 4px;
   border: 1px solid rgba(66, 133, 244, 0.4);
   white-space: nowrap;
+  width: 240px;
   transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .downloadRomBtn:hover {
   background-color: #3b78e7;
+  transform: translateY(-1px);
+}
+
+.downloadRomBtnFastboot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(52, 168, 83, 0.4);
+  white-space: nowrap;
+  width: 240px;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.downloadRomBtnFastboot:hover {
+  background-color: #2b8b42;
   transform: translateY(-1px);
 }
 
@@ -496,7 +534,8 @@
     gap: var(--spacing-md);
   }
 
-  .downloadRomBtn {
+  .downloadRomBtn,
+  .downloadRomBtnFastboot {
     width: 100%;
   }
 
@@ -532,4 +571,3 @@
     grid-template-columns: 1fr;
   }
 }
-

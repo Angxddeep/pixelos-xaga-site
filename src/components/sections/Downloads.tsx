@@ -27,35 +27,70 @@ export const Downloads = () => {
         <div className={styles.dashboard}>
           {/* Main ROM Block */}
           <div className={styles.dashboardSection}>
-            <h3 className={styles.dashboardSectionTitle}>PixelOS </h3>
-            <div className={styles.romRelease}>
-              <div className={styles.romIndicator}></div>
-              <div className={styles.romInfo}>
-                <div className={styles.romHeader}>
-                  <h4 className={styles.romName}>PixelOS ROM</h4>
+            <h3 className={styles.dashboardSectionTitle}>PixelOS</h3>
+            <div className={styles.releasesContainer}>
+              {/* Recovery ZIP Row */}
+              <div className={styles.romRelease}>
+                <div className={styles.romIndicator}></div>
+                <div className={styles.romInfo}>
+                  <div className={styles.romHeader}>
+                    <h4 className={styles.romName}>PixelOS ROM (Flashed via Recovery)</h4>
+                  </div>
+                  <div className={styles.romMetadataGrid}>
+                    <div className={styles.metadataCell}>
+                      <span className={styles.metadataLabel}>Version</span>
+                      <span className={styles.metadataValue}>{DOWNLOADS.rom.version}</span>
+                    </div>
+                    <div className={styles.metadataCell}>
+                      <span className={styles.metadataLabel}>Build Date</span>
+                      <span className={styles.metadataValue}>{DOWNLOADS.rom.date}</span>
+                    </div>
+                    <div className={styles.metadataCell}>
+                      <span className={styles.metadataLabel}>Package File</span>
+                      <span className={styles.metadataValueFilename} title={DOWNLOADS.rom.filename}>
+                        {DOWNLOADS.rom.filename}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.romMetadataGrid}>
-                  <div className={styles.metadataCell}>
-                    <span className={styles.metadataLabel}>Version</span>
-                    <span className={styles.metadataValue}>{DOWNLOADS.rom.version}</span>
-                  </div>
-                  <div className={styles.metadataCell}>
-                    <span className={styles.metadataLabel}>Build Date</span>
-                    <span className={styles.metadataValue}>{DOWNLOADS.rom.date}</span>
-                  </div>
-                  <div className={styles.metadataCell}>
-                    <span className={styles.metadataLabel}>Package File</span>
-                    <span className={styles.metadataValueFilename} title={DOWNLOADS.rom.filename}>
-                      {DOWNLOADS.rom.filename}
-                    </span>
-                  </div>
+                <div className={styles.romActions}>
+                  <a href={DOWNLOADS.rom.link} className={styles.downloadRomBtn}>
+                    <DownloadIcon size={18} />
+                    <span>Download ZIP</span>
+                  </a>
                 </div>
               </div>
-              <div className={styles.romActions}>
-                <a href={DOWNLOADS.rom.link} className={styles.downloadRomBtn}>
-                  <DownloadIcon size={18} />
-                  <span>Download ROM Package</span>
-                </a>
+
+              {/* Fastboot Package Row */}
+              <div className={styles.romRelease}>
+                <div className={styles.romIndicatorFastboot}></div>
+                <div className={styles.romInfo}>
+                  <div className={styles.romHeader}>
+                    <h4 className={styles.romName}>PixelOS Fastboot Package (Flashed via script)</h4>
+                  </div>
+                  <div className={styles.romMetadataGrid}>
+                    <div className={styles.metadataCell}>
+                      <span className={styles.metadataLabel}>Version</span>
+                      <span className={styles.metadataValue}>{DOWNLOADS.fastboot_package.version}</span>
+                    </div>
+                    <div className={styles.metadataCell}>
+                      <span className={styles.metadataLabel}>Build Date</span>
+                      <span className={styles.metadataValue}>{DOWNLOADS.fastboot_package.date}</span>
+                    </div>
+                    <div className={styles.metadataCell}>
+                      <span className={styles.metadataLabel}>Package File</span>
+                      <span className={styles.metadataValueFilename} title={DOWNLOADS.fastboot_package.filename}>
+                        {DOWNLOADS.fastboot_package.filename}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.romActions}>
+                  <a href={DOWNLOADS.fastboot_package.link} className={styles.downloadRomBtnFastboot}>
+                    <DownloadIcon size={18} />
+                    <span>Download Fastboot ZIP</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -248,4 +283,3 @@ export const Downloads = () => {
     </section>
   );
 };
-

@@ -2,9 +2,9 @@ export const DOWNLOADS = {
   rom: {
     name: "PixelOS ROM",
     version: "16.2 (Android 16)",
-    date: "2026-05-28",
-    filename: "PixelOS_xaga-16.2-20260528-0647.zip",
-    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_xaga-16.2-20260528-0647.zip"
+    date: "2026-06-11",
+    filename: "PixelOS_xaga-16.2-20260611-0652.zip",
+    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_xaga-16.2-20260611-0652.zip"
   },
   recovery_images: [
     {
@@ -38,6 +38,13 @@ export const DOWNLOADS = {
         command: "sudo apt install android-sdk-platform-tools"
       }
     ]
+  },
+  fastboot_package: {
+    name: "Fastboot Package",
+    version: "2026-06-11",
+    date: "2026-06-11",
+    filename: "PixelOS_20260611-0652_FASTBOOT.zip",
+    link: "https://pixelos-xaga-worker.angxddeep.workers.dev/PixelOS_20260611-0652_FASTBOOT.zip"
   },
 
   drivers: {

@@ -13,6 +13,41 @@
   margin-bottom: var(--spacing-3xl);
 }
 
+.methodSelector {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-3xl);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+}
+
+.tabButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tabButton:hover {
+  color: var(--color-text-bright);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tabButtonActive {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(66, 133, 244, 0.05);
+}
+
 .sectionTitle {
   font-size: 2.5rem;
   font-weight: 800;
@@ -174,6 +209,26 @@
   color: var(--color-text-dim);
 }
 
+.platformList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+}
+
+.platformItem {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.platformLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+}
+
 @media (max-width: 640px) {
   .container {
     padding: 0 var(--spacing-lg);
@@ -209,5 +264,9 @@
   .warning,
   .info {
     font-size: 0.875rem;
+  }
+
+  .platformList {
+    grid-template-columns: 1fr;
   }
 }
