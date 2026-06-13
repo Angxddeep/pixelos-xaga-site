@@ -1,19 +1,30 @@
-import { useState, useEffect } from 'react';
-import type { MouseEvent } from 'react';
-import { clsx } from 'clsx';
-import { MenuIcon, XIcon } from '../ui/Icons';
-import { getSectionPath, scrollToSection } from '../../utils/sectionNavigation';
-import styles from './Navbar.module.css';
+import { useState, useEffect } from "react";
+import type { MouseEvent } from "react";
+import { clsx } from "clsx";
+import { MenuIcon, XIcon } from "../ui/Icons";
+import { getSectionPath, scrollToSection } from "../../utils/sectionNavigation";
+import styles from "./Navbar.module.css";
 
 const navLinks = [
-  { name: 'Downloads', href: getSectionPath('downloads'), sectionId: 'downloads' },
-  { name: 'Guide', href: getSectionPath('guide'), sectionId: 'guide' },
-  { name: 'Troubleshooting', href: getSectionPath('troubleshooting'), sectionId: 'troubleshooting' },
+  {
+    name: "Downloads",
+    href: getSectionPath("downloads"),
+    sectionId: "downloads",
+  },
+  { name: "Guide", href: getSectionPath("guide"), sectionId: "guide" },
+  {
+    name: "Troubleshooting",
+    href: getSectionPath("troubleshooting"),
+    sectionId: "troubleshooting",
+  },
 ] as const;
 
 const socialLinks = [
-  { name: 'Telegram', href: 'https://t.me/XAGASupport', iconSrc: '/brands/telegram.svg' },
-  { name: 'GitHub', href: 'https://github.com/orgs/PixelOS-XagaDev/repositories', iconSrc: '/brands/github.svg' },
+  {
+    name: "Telegram",
+    href: "https://t.me/XAGASupport",
+    iconSrc: "/brands/telegram.svg",
+  },
 ] as const;
 
 export const Navbar = () => {
@@ -21,20 +32,22 @@ export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
-  const handleSectionClick = (sectionId: string, path: string, closeMenu = false) => (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    scrollToSection(sectionId, { path, history: 'push' });
+  const handleSectionClick =
+    (sectionId: string, path: string, closeMenu = false) =>
+    (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      scrollToSection(sectionId, { path, history: "push" });
 
-    if (closeMenu) {
-      setIsMenuOpen(false);
-    }
-  };
+      if (closeMenu) {
+        setIsMenuOpen(false);
+      }
+    };
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sectionLinks = navLinks.filter((link) => 'sectionId' in link);
+      const sectionLinks = navLinks.filter((link) => "sectionId" in link);
       const viewportMarker = window.innerHeight * 0.35;
       const sections = sectionLinks.flatMap((link) => {
         const element = document.getElementById(link.sectionId);
@@ -65,22 +78,30 @@ export const Navbar = () => {
     };
 
     handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav className={clsx(styles.navbar, isScrolled && styles.scrolled)}>
       <div className={styles.container}>
         <a href="/" className={styles.logo} aria-label="Go to homepage">
-          <img src="/favicon.svg" alt="" className={styles.logoIcon} aria-hidden="true" />
-          <span>PixelOS <span className={styles.device}>xaga</span></span>
+          <img
+            src="/favicon.svg"
+            alt=""
+            className={styles.logoIcon}
+            aria-hidden="true"
+          />
+          <span>
+            PixelOS <span className={styles.device}>xaga</span>
+          </span>
         </a>
 
         {/* Desktop Links */}
         <div className={styles.desktopLinks}>
           {navLinks.map((link) => {
-            const isActive = 'sectionId' in link && activeSection === link.sectionId;
+            const isActive =
+              "sectionId" in link && activeSection === link.sectionId;
 
             return (
               <a
@@ -88,7 +109,7 @@ export const Navbar = () => {
                 href={link.href}
                 className={clsx(styles.link, isActive && styles.activeLink)}
                 onClick={handleSectionClick(link.sectionId, link.href)}
-                aria-current={isActive ? 'page' : undefined}
+                aria-current={isActive ? "page" : undefined}
               >
                 {link.name}
               </a>
@@ -106,7 +127,12 @@ export const Navbar = () => {
                   rel="noopener noreferrer"
                   aria-label={link.name}
                 >
-                  <img src={link.iconSrc} alt="" className={styles.iconImage} aria-hidden="true" />
+                  <img
+                    src={link.iconSrc}
+                    alt=""
+                    className={styles.iconImage}
+                    aria-hidden="true"
+                  />
                 </a>
               );
             })}
@@ -114,8 +140,8 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className={styles.menuButton} 
+        <button
+          className={styles.menuButton}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -124,17 +150,23 @@ export const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={clsx(styles.mobileMenu, isMenuOpen && styles.mobileMenuOpen)}>
+      <div
+        className={clsx(styles.mobileMenu, isMenuOpen && styles.mobileMenuOpen)}
+      >
         {navLinks.map((link) => {
-          const isActive = 'sectionId' in link && activeSection === link.sectionId;
+          const isActive =
+            "sectionId" in link && activeSection === link.sectionId;
 
           return (
             <a
               key={link.name}
               href={link.href}
-              className={clsx(styles.mobileLink, isActive && styles.activeMobileLink)}
+              className={clsx(
+                styles.mobileLink,
+                isActive && styles.activeMobileLink,
+              )}
               onClick={handleSectionClick(link.sectionId, link.href, true)}
-              aria-current={isActive ? 'page' : undefined}
+              aria-current={isActive ? "page" : undefined}
             >
               {link.name}
             </a>
@@ -153,7 +185,12 @@ export const Navbar = () => {
                 rel="noopener noreferrer"
                 aria-label={link.name}
               >
-                <img src={link.iconSrc} alt="" className={styles.mobileIconImage} aria-hidden="true" />
+                <img
+                  src={link.iconSrc}
+                  alt=""
+                  className={styles.mobileIconImage}
+                  aria-hidden="true"
+                />
                 {link.name}
               </a>
             );

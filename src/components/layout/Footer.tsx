@@ -18,7 +18,7 @@ export const Footer = () => {
             <h4>Resources</h4>
             <ul>
               <li><a href="https://pixelos.net" target="_blank" rel="noopener noreferrer">Official PixelOS Website</a></li>
-              <li><a href="https://github.com/PixelOS-AOSP" target="_blank" rel="noopener noreferrer">Pixelos Xaga GitHub</a></li>
+              <li><a href="https://github.com/PixelOS-AOSP" target="_blank" rel="noopener noreferrer">Pixelos GitHub</a></li>
               <li><a href="https://blog.pixelos.net" target="_blank" rel="noopener noreferrer">PixelOS Blog</a></li>
               <li><a href={DOWNLOADS.links.xda} target="_blank" rel="noopener noreferrer">XDA Thread</a></li>
             </ul>
