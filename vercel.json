@@ -1,17 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/downloads",
-      "destination": "/"
-    },
-    {
-      "source": "/instructions",
-      "destination": "/"
-    },
-    {
-      "source": "/support",
-      "destination": "/"
+      "source": "/:path*",
+      "destination": "https://aosp-angad.vercel.app/",
+      "permanent": true
     }
   ]
 }
